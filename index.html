@@ -3,37 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3D Object Viewer</title>
+  <title>3D Pizza Viewer</title>
   <!-- Include model-viewer library -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
+    /* General page styling */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f0f0f0;
+      padding: 0;
+      text-align: center;
+      background-color: #f9f9f9;
     }
+
+    /* Title styling */
+    h1 {
+      margin: 20px;
+      color: #444;
+    }
+
+    /* 3D model container styling */
     model-viewer {
       width: 80%;
-      height: 80%;
-      border: 1px solid #ccc;
+      height: 70vh;
+      border: 2px solid #ddd;
       border-radius: 10px;
       background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: auto;
     }
   </style>
 </head>
 <body>
+  <h1>3D Pizza Viewer</h1>
   <!-- Embed the 3D model -->
   <model-viewer 
-    src="https://modelviewer.dev/shared-assets/models/pizza.glb"
-    alt="A 3D Pizza" 
+    src="https://modelviewer.dev/shared-assets/models/pizza.glb" 
+    alt="A 3D pizza model" 
     auto-rotate 
     camera-controls 
-    ar 
-    ar-modes="webxr scene-viewer quick-look">
+    ar>
   </model-viewer>
 </body>
 </html>
