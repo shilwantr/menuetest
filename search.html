@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      
+      font-family: 'Arial', sans-serif;
+      /* background: url('https://images.unsplash.com/photo-1516685304081-de7947d419d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920');
+      background-size: cover; */
+      background-position: center;
+      /* color: #333; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+body{
+  /* background: url('https://images.unsplash.com/photo-1603803721487-97009eb7f8db?q=80&w=2698&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); */
+  background-image: url('./assets/osama-bgid-pZ_slUF1YCc-unsplash.jpg');
+
+}
+    header {
+      margin: 20px 0;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #e91e63;
+    }
+
+    .results-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .result-card {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: url('./assets/wesual-click-eXdKs9d37Sc-unsplash.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .model-container {
+      margin-top: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    model-viewer {
+      width: 400px;
+      height: 400px;
+      background: none;
+    }
+    
+    .price {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body style="color: darkorange;">
+  <header>
+    <h1>Search Results</h1>
+  </header>
+
+  <div class="results-container">
+    <div class="result-card">
+      <model-viewer 
+        src="assets/Cheeseburger.glb" 
+        alt="Burger" 
+        auto-rotate 
+        camera-controls>
+      </model-viewer>
+      <p class="price">Price: ₹150</p>
+    </div>
+
+    <div class="result-card">
+      <model-viewer 
+        src="assets/Cheeseburger.glb" 
+        alt="Pizza" 
+        auto-rotate 
+        camera-controls>
+      </model-viewer>
+      <p class="price">Price: ₹250</p>
+    </div>
+
+    <div class="result-card">
+      <model-viewer 
+        src="assets/Cheeseburger.glb" 
+        alt="Ice Cream" 
+        auto-rotate 
+        camera-controls>
+      </model-viewer>
+      <p class="price">Price: ₹100</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2024 3D Food Gallery. All rights reserved.
+  </footer>
+</body>
+</html>

@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimal Landing Page</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const searchInput = document.querySelector("input[type='text']");
+      const searchButton = document.querySelector("button");
+      const placeholderTexts = ["Juices", "Falooda", "Lassi", "Lemon Soda"];
+      let currentIndex = 0;
+  
+      // Change placeholder text every 2 seconds
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % placeholderTexts.length;
+        searchInput.placeholder = `Search for ${placeholderTexts[currentIndex]}...`;
+      }, 2000);
+  
+      // Redirect to search results page on search
+      searchButton.addEventListener("click", () => {
+        window.location.href = "search.html";
+      });
+    });
+  </script>
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: rgba(255, 0, 0, 0.702); /* Solid background color */
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    header {
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+
+    .search-container {
+      margin-top: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      width: 300px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #c2185b;
+      border: none;
+      border-radius: 5px;
+      margin-left: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover {
+      background-color: #ad1457;
+    }
+
+    .model-container {
+      margin-top: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    model-viewer {
+      width: 400px;
+      height: 400px;
+      background: none;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to 3D Food Gallery</h1>
+    <p>Explore stunning 3D food models on your table befor you order it</p>
+  </header>
+
+  <div class="search-container">
+    <input style="color: darkred;" type="text" disabled placeholder="Search for food models...">
+    <button>Explore</button>
+  </div>
+
+  <div class="model-container">
+    <model-viewer 
+      src="assets/Cheeseburger.glb" 
+      alt="3D Food Dish" 
+      auto-rotate 
+      camera-controls>
+    </model-viewer>
+  </div>
+
+  <footer>
+    &copy; 2024 3D Food Gallery. All rights reserved.
+  </footer>
+</body>
+</html>
