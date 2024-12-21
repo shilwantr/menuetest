@@ -1,170 +1,130 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3D Food Menu</title>
-  <!-- Include model-viewer library -->
+  <title>Minimal Landing Page</title>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const searchInput = document.querySelector("input[type='text']");
+      const searchButton = document.querySelector("button");
+      const placeholderTexts = ["Juices", "Falooda", "Lassi", "Lemon Soda"];
+      let currentIndex = 0;
+  
+      // Change placeholder text every 2 seconds
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % placeholderTexts.length;
+        searchInput.placeholder = `Search for ${placeholderTexts[currentIndex]}...`;
+      }, 2000);
+  
+      // Redirect to search results page on search
+      searchButton.addEventListener("click", () => {
+        window.location.href = "search.html";
+      });
+    });
+  </script>
+  
   <style>
-    /* General page styling */
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f9f9f9;
-    }
-
-    /* Cover page styling */
-    #cover-page {
+      font-family: 'Arial', sans-serif;
+      background-color: rgba(255, 0, 0, 0.702); /* Solid background color */
+      color: white;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
-      background: linear-gradient(135deg, #ff0000, #ffd700);
-      color: #fff;
       text-align: center;
     }
 
-    #cover-page h1 {
-      font-size: 3rem;
-      margin: 20px 0;
+    header {
+      margin-bottom: 20px;
     }
 
-    #cover-page button {
-      padding: 15px 30px;
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    p {
+      margin-top: 10px;
       font-size: 1.2rem;
-      color: #fff;
-      background-color: #ff4500;
+    }
+
+    .search-container {
+      margin-top: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1rem;
       border: none;
       border-radius: 5px;
+      width: 300px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #c2185b;
+      border: none;
+      border-radius: 5px;
+      margin-left: 10px;
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    #cover-page button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    button:hover {
+      background-color: #ad1457;
     }
 
-    model-viewer#cover-model {
-      width: 300px;
-      height: 300px;
-      margin: 20px 0;
-      background-color: #fff;
-      border-radius: 50%;
-    }
-
-    /* Menu page styling */
-    #menu-page {
-      display: none;
-      padding: 20px;
-    }
-
-    h2 {
-      text-align: center;
-      margin: 20px;
-      color: #444;
-    }
-
-    .grid-container {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(3, 1fr); /* 3 columns on larger screens */
-    }
-
-    @media (max-width: 768px) {
-      .grid-container {
-        grid-template-columns: 1fr; /* 1 column on smaller screens */
-      }
-    }
-
-    .card {
-      text-align: center;
-      padding: 10px;
-      background-color: #fff;
-      border: 2px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    .model-container {
+      margin-top: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
 
     model-viewer {
-      width: 100%;
-      height: 200px;
-      background-color: #f4f4f4;
-      border-radius: 10px;
+      width: 400px;
+      height: 400px;
+      background: none;
     }
 
-    .price {
-      margin-top: 10px;
-      font-size: 16px;
-      color: #444;
-      font-weight: bold;
+    footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <!-- Cover Page -->
-  <div id="cover-page">
-    <h1>Welcome to 3D Food Menu</h1>
-    <model-viewer id="cover-model" 
+  <header>
+    <h1>Welcome to 3D Food Gallery</h1>
+    <p>Explore stunning 3D food models on your table befor you order it</p>
+  </header>
+
+  <div class="search-container">
+    <input style="color: darkred;" type="text" disabled placeholder="Search for food models...">
+    <button>Explore</button>
+  </div>
+
+  <div class="model-container">
+    <model-viewer 
       src="assets/Cheeseburger.glb" 
-      alt="3D Rotating Food Dish" 
+      alt="3D Food Dish" 
       auto-rotate 
       camera-controls>
     </model-viewer>
-    <button onclick="showMenu()">Explore Menu</button>
   </div>
 
-  <!-- Menu Page -->
-  <div id="menu-page">
-    <h2>3D Food Menu</h2>
-    <div class="grid-container">
-      <!-- Card 1 -->
-      <div class="card">
-        <model-viewer 
-          src="assets/Cheeseburger.glb" 
-          alt="3D Cheeseburger Model" 
-          auto-rotate 
-          camera-controls 
-          ar>
-        </model-viewer>
-        <div class="price">₹199</div>
-      </div>
-      <!-- Card 2 -->
-      <div class="card">
-        <model-viewer 
-          src="assets/Cheeseburger.glb" 
-          alt="3D Veg Pizza Model" 
-          auto-rotate 
-          camera-controls 
-          ar>
-        </model-viewer>
-        <div class="price">₹299</div>
-      </div>
-      <!-- Card 3 -->
-      <div class="card">
-        <model-viewer 
-          src="assets/Cheeseburger.glb" 
-          alt="3D Pepperoni Pizza Model" 
-          auto-rotate 
-          camera-controls 
-          ar>
-        </model-viewer>
-        <div class="price">₹399</div>
-      </div>
-      <!-- Add more cards as needed -->
-    </div>
-  </div>
-
-  <script>
-    // Function to show the menu page
-    function showMenu() {
-      document.getElementById('cover-page').style.display = 'none';
-      document.getElementById('menu-page').style.display = 'block';
-    }
-  </script>
+  <footer>
+    &copy; 2024 3D Food Gallery. All rights reserved.
+  </footer>
 </body>
 </html>
